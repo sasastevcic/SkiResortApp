@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col">
+        <ski-resort-panel [skiResort]="skiResort"></ski-resort-panel>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <ngb-tabset [justify]="'fill'">
+            <ngb-tab title="Tracks">
+                <ng-template ngbTabContent>
+                    <ski-tracks [tracks]="tracks" (sort)="updateSort($event)"></ski-tracks>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Weather">
+                <ng-template ngbTabContent>
+                    <div class="row">
+                        <div class="col-2" *ngFor="let w of weathers">
+                            <ski-weather [weather]="w"></ski-weather>
+                        </div>
+                    </div>
+                </ng-template>
+            </ngb-tab>
+            <ngb-tab title="Ski-pass">
+                <ng-template ngbTabContent>
+                    <ski-ski-pass [skipass]="skipass" (reserve)="saveReservation($event)"></ski-ski-pass>
+                </ng-template>
+            </ngb-tab>
+        </ngb-tabset>
+    </div>
+</div>
